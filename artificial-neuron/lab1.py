@@ -64,15 +64,15 @@ class Perceptron:
 
 
 # 3. Rasti tinkamus svorių ir bias rinkinius (be mokymo; step funkcija)
-def find_weight_sets(data, activation_function, num_sets=3, max_iter=100000, weight_range=(-10, 10)):
+def find_weight_sets(data, activation_function, num_sets=3, max_iter=100000):
     found_sets = []
     iterations = 0
 
     # Ieškome svorių, kol nesurasime trijų rinkinių
     while len(found_sets) < num_sets and iterations < max_iter:
-        w1 = np.random.uniform(*(-10, 10))
-        w2 = np.random.uniform(*(-10, 10))
-        b = np.random.uniform(*(-10, 10))
+        w1 = np.random.uniform(low=-10, high=10)
+        w2 = np.random.uniform(low=-10, high=10)
+        b = np.random.uniform(low=-10, high=10)
         neuron = Perceptron(w1, w2, b, activation_function)
 
         # Patikriname, ar visi duomenų taškai teisingai klasifikuojami
@@ -99,9 +99,9 @@ for idx, (w1, w2, b) in enumerate(weight_sets):
 
 
 # 4. Rasti tinkamus svorių ir bias rinkinius (be mokymo; sigmoid funkcija)
-weight_sets = find_weight_sets(data, sigmoid_function)
+weight_sets2 = find_weight_sets(data, sigmoid_function)
 print("\nRasti tinkami svorių (w1, w2) ir bias (b) rinkiniai (sigmoidinė funkcija):")
-for idx, (w1, w2, b) in enumerate(weight_sets, start=1):
+for idx, (w1, w2, b) in enumerate(weight_sets2, start=1):
     print(f"Rinkinys {idx}: w1 = {w1:.4f}, w2 = {w2:.4f}, bias = {b:.4f}")
 
 
@@ -153,8 +153,8 @@ def plot_data_and_boundaries(data, weight_sets):
     plt.legend()
     # Nustatome ribas, kad grafiko X ir Y kraštinių santykis būtų 1:1.
     # Reikalinga, kad vektoriai matytūsi, jog jie yra statmeni jų tiesėms
-    plt.gca().set_xlim([-4, 4])
-    plt.gca().set_ylim([-4, 4])
+    plt.gca().set_xlim([-6, 6])
+    plt.gca().set_ylim([-6, 6])
     plt.show()
 
 
