@@ -299,7 +299,7 @@ if __name__ == "__main__":
     plt.show()
 
     # 3.5 Eksperimentas 3: Itaka mokymosi greiciui (paketinis metodas)
-    learning_rates = [0.01, 0.05, 0.1]
+    learning_rates = [0.05, 0.1, 0.3, 0.5, 0.7, 0.9]
     batch_results = {}
 
     print("\nIvertiname skirtingus mokymosi greicius (paketinis metodas)...")
