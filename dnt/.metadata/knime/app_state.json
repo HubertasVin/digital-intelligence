@@ -1,0 +1,22 @@
+{
+  "version" : "5.4.3.v202503031608",
+  "projects" : [ {
+    "name" : "DNT",
+    "active" : true,
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "relativePath" : "DNT"
+    }
+  } ],
+  "mostRecentlyUsedProjects" : [ {
+    "name" : "DNT",
+    "timeUsed" : "2025-04-05T21:24:14.347804257+03:00",
+    "origin" : {
+      "providerId" : "local",
+      "spaceId" : "local",
+      "projectType" : "WORKFLOW",
+      "relativePath" : "DNT"
+    }
+  } ]
+}

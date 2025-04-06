@@ -1,0 +1,1140 @@
+2025-04-05 21:23:52,057 : WARN  : Thread-1160 :  : OAuthAuthenticator :  :  : Could not stop OAuth redirect listener: null
+java.lang.InterruptedException
+	at java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireSharedInterruptibly(Unknown Source)
+	at java.base/java.util.concurrent.CountDownLatch.await(Unknown Source)
+	at org.eclipse.jetty.io.ManagedSelector.doStop(ManagedSelector.java:137)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.stop(AbstractLifeCycle.java:132)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.stop(ContainerLifeCycle.java:182)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStop(ContainerLifeCycle.java:205)
+	at org.eclipse.jetty.io.SelectorManager.doStop(SelectorManager.java:280)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.stop(AbstractLifeCycle.java:132)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.stop(ContainerLifeCycle.java:182)
+	at org.eclipse.jetty.util.component.ContainerLifeCycle.doStop(ContainerLifeCycle.java:205)
+	at org.eclipse.jetty.server.AbstractConnector.doStop(AbstractConnector.java:375)
+	at org.eclipse.jetty.server.AbstractNetworkConnector.doStop(AbstractNetworkConnector.java:82)
+	at org.eclipse.jetty.server.ServerConnector.doStop(ServerConnector.java:241)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.stop(AbstractLifeCycle.java:132)
+	at org.eclipse.jetty.server.Server.doStop(Server.java:658)
+	at org.eclipse.jetty.util.component.AbstractLifeCycle.stop(AbstractLifeCycle.java:132)
+	at com.knime.explorer.server.rest.OAuthAuthenticator.stopServer(OAuthAuthenticator.java:733)
+	at com.knime.explorer.server.rest.OAuthAuthenticator.login(OAuthAuthenticator.java:599)
+	at com.knime.explorer.server.rest.OAuthLoginDialog.lambda$0(OAuthLoginDialog.java:179)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2025-04-05 21:24:49,387 : ERROR : ServerSpace Update Timer :  : UpdateManager :  :  : Server hubertasvin@api.hub.knime.com cache update failed - logging out.
+org.knime.core.util.exception.RuntimeResourceAccessException: 500 An error occurred while fetching the current account's identity: An internal error occurred. (Error ID: 'error_460b49ab-d5a5-4578-866f-77429af6b150')
+
+	at org.knime.core.util.exception.RuntimeResourceAccessException.from(RuntimeResourceAccessException.java:84)
+	at org.knime.core.util.exception.HttpExceptionUtils.returnWithRuntimeException(HttpExceptionUtils.java:116)
+	at com.knime.enterprise.client.rest.RestServerContent.refreshFetchers(RestServerContent.java:747)
+	at com.knime.enterprise.client.rest.RestServerContent.updateContentCache(RestServerContent.java:689)
+	at com.knime.enterprise.client.rest.RestServerContent.updateCacheOnNewContent(RestServerContent.java:1022)
+	at com.knime.explorer.server.internal.UpdateManager$1.run(UpdateManager.java:116)
+	at java.base/java.util.TimerThread.mainLoop(Unknown Source)
+	at java.base/java.util.TimerThread.run(Unknown Source)
+Caused by: org.knime.core.util.exception.ServerErrorAccessException: 500 An error occurred while fetching the current account's identity: An internal error occurred. (Error ID: 'error_460b49ab-d5a5-4578-866f-77429af6b150')
+
+	at org.knime.core.util.exception.HttpExceptionUtils.wrapException(HttpExceptionUtils.java:90)
+	at com.knime.enterprise.client.rest.HubContent.getCurrentAccountIdentity(HubContent.java:667)
+	at com.knime.enterprise.client.rest.HubContent.getRepositoryRootEndpoints(HubContent.java:451)
+	at org.knime.core.util.exception.HttpExceptionUtils.returnWithRuntimeException(HttpExceptionUtils.java:114)
+	... 6 more
+2025-04-05 21:24:49,569 : ERROR : ForkJoinPool.commonPool-worker-2 :  : HubSpaceProviders$HubSpaceProvider :  :  : Problem fetching hub spaces for 'My-KNIME-Hub'
+org.knime.core.util.exception.ClientErrorAccessException: 404 An error occurred while accessing item '/knime/rest/v4/repository/Users/hubertasvin': No item found at path '/Users/account:user:a93852f3-6eb6-44d3-9e3f-e030eac895c9'.
+	at org.knime.core.util.exception.HttpExceptionUtils.wrapException(HttpExceptionUtils.java:85)
+	at com.knime.explorer.server.internal.APRestFacade.fetchRepositoryItem(APRestFacade.java:213)
+	at com.knime.explorer.server.internal.APRestFacade.fetchRepositoryItem(APRestFacade.java:193)
+	at com.knime.explorer.server.internal.APHubFacade.listGroups(APHubFacade.java:111)
+	at com.knime.explorer.server.internal.HubSpaceProviders$HubSpaceProvider$HubSpaceProviderConnection.fetchGroupsFromHub(HubSpaceProviders.java:282)
+	at com.knime.explorer.server.internal.HubSpaceProviders$HubSpaceProvider$HubSpaceProviderConnection.updateSpaceMap(HubSpaceProviders.java:238)
+	at com.knime.explorer.server.internal.HubSpaceProviders$HubSpaceProvider.lambda$5(HubSpaceProviders.java:132)
+	at java.base/java.util.Optional.map(Unknown Source)
+	at com.knime.explorer.server.internal.HubSpaceProviders$HubSpaceProvider.toEntity(HubSpaceProviders.java:132)
+	at org.knime.gateway.impl.util.NetworkExceptions.lambda$0(NetworkExceptions.java:148)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.run(Unknown Source)
+	at java.base/java.util.concurrent.CompletableFuture$AsyncSupply.exec(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinTask.doExec(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinPool$WorkQueue.topLevelExec(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinPool.scan(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinPool.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ForkJoinWorkerThread.run(Unknown Source)
+2025-04-05 21:26:42,933 : WARN  : comm-pool-thread-1 :  : Node : CSV Reader : 3:1 : Please specify a file
+2025-04-05 21:28:24,557 : WARN  : main :  : Node : Partitioning : 3:2 : No sampling method selected
+2025-04-05 21:29:12,759 : WARN  : main :  : Node : Partitioning : 3:2 : No sampling method selected
+2025-04-05 21:30:02,623 : WARN  : main :  : Node : CSV Writer : 3:4 : Please specify a file
+2025-04-05 21:30:02,623 : WARN  : main :  : Node : CSV Writer : 3:3 : Please specify a file
+2025-04-05 21:30:11,404 : WARN  : main :  : Node : CSV Writer : 3:4 : Please specify a file
+2025-04-05 21:30:11,404 : WARN  : main :  : Node : CSV Writer : 3:3 : Please specify a file
+2025-04-05 21:30:12,406 : WARN  : main :  : Node : CSV Writer : 3:4 : Please specify a file
+2025-04-05 21:30:12,406 : WARN  : main :  : Node : CSV Writer : 3:3 : Please specify a file
+2025-04-05 21:32:37,667 : ERROR : KNIME-Worker-2-CSV Writer 3:4 :  : Node : CSV Writer : 3:4 : Execute failed: Output file '/home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris-test.csv' exists and must not be overwritten due to user settings.
+java.io.IOException: Output file '/home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris-test.csv' exists and must not be overwritten due to user settings.
+	at org.knime.base.node.io.filehandling.csv.writer.CSVWriter2NodeModel.createOutputStream(CSVWriter2NodeModel.java:217)
+	at org.knime.base.node.io.filehandling.csv.writer.CSVWriter2NodeModel.writeToFile(CSVWriter2NodeModel.java:167)
+	at org.knime.base.node.io.filehandling.csv.writer.CSVWriter2NodeModel.execute(CSVWriter2NodeModel.java:147)
+	at org.knime.base.node.io.filehandling.csv.writer.CSVWriter2NodeModel.execute(CSVWriter2NodeModel.java:1)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+Caused by: java.nio.file.FileAlreadyExistsException: /home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris-test.csv
+	at java.base/sun.nio.fs.UnixException.translateToIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(Unknown Source)
+	at org.knime.filehandling.core.fs.local.fs.LocalFileSystemProvider.newByteChannel(LocalFileSystemProvider.java:148)
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source)
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source)
+	at org.knime.filehandling.core.connections.FSFiles.newOutputStream(FSFiles.java:146)
+	at org.knime.base.node.io.filehandling.csv.writer.CSVWriter2NodeModel.createOutputStream(CSVWriter2NodeModel.java:214)
+	... 16 more
+2025-04-05 21:32:37,667 : ERROR : KNIME-Worker-3-CSV Writer 3:3 :  : Node : CSV Writer : 3:3 : Execute failed: Output file '/home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris-train.csv' exists and must not be overwritten due to user settings.
+java.io.IOException: Output file '/home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris-train.csv' exists and must not be overwritten due to user settings.
+	at org.knime.base.node.io.filehandling.csv.writer.CSVWriter2NodeModel.createOutputStream(CSVWriter2NodeModel.java:217)
+	at org.knime.base.node.io.filehandling.csv.writer.CSVWriter2NodeModel.writeToFile(CSVWriter2NodeModel.java:167)
+	at org.knime.base.node.io.filehandling.csv.writer.CSVWriter2NodeModel.execute(CSVWriter2NodeModel.java:147)
+	at org.knime.base.node.io.filehandling.csv.writer.CSVWriter2NodeModel.execute(CSVWriter2NodeModel.java:1)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+Caused by: java.nio.file.FileAlreadyExistsException: /home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris-train.csv
+	at java.base/sun.nio.fs.UnixException.translateToIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(Unknown Source)
+	at org.knime.filehandling.core.fs.local.fs.LocalFileSystemProvider.newByteChannel(LocalFileSystemProvider.java:148)
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source)
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source)
+	at org.knime.filehandling.core.connections.FSFiles.newOutputStream(FSFiles.java:146)
+	at org.knime.base.node.io.filehandling.csv.writer.CSVWriter2NodeModel.createOutputStream(CSVWriter2NodeModel.java:214)
+	... 16 more
+2025-04-05 21:55:33,067 : WARN  : comm-pool-thread-1 :  : Node : CSV Reader : 3:6 : Please specify a file
+2025-04-05 21:55:36,016 : WARN  : comm-pool-thread-1 :  : Node : CSV Reader : 3:7:6 : Please specify a file
+2025-04-05 21:56:58,651 : WARN  : comm-pool-thread-1 :  : Node : RProp MLP Learner : 3:7:7 : Class column not set
+2025-04-05 21:58:53,177 : WARN  : main :  : Node : Model Writer : 3:7:9 : Please specify a file
+2025-04-05 21:58:53,177 : WARN  : main :  : Node : Scorer : 3:7:10 : No columns selected yet.
+2025-04-05 21:58:54,156 : WARN  : main :  : Node : Model Writer : 3:7:9 : Please specify a file
+2025-04-05 21:58:54,156 : WARN  : main :  : Node : Scorer : 3:7:10 : No columns selected yet.
+2025-04-05 22:00:06,918 : WARN  : KNIME-Worker-10-CSV Reader 3:7:6 :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-05 22:00:07,000 : WARN  : KNIME-Worker-11-RProp MLP Learner 3:7:7 :  : Node : Model Writer : 3:7:9 : Please specify a file
+2025-04-05 22:01:58,058 : WARN  : KNIME-Worker-14-CSV Reader 3:7:6 :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-05 22:01:58,086 : ERROR : KNIME-Worker-14-Model Writer 3:7:9 :  : Node : Model Writer : 3:7:9 : Execute failed: Output file '/home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/model.model' exists and must not be overwritten due to user settings.
+java.io.IOException: Output file '/home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/model.model' exists and must not be overwritten due to user settings.
+	at org.knime.filehandling.core.node.portobject.writer.PortObjectToPathWriterNodeModel.execute(PortObjectToPathWriterNodeModel.java:101)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+Caused by: java.nio.file.FileAlreadyExistsException: /home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/model.model
+	at java.base/sun.nio.fs.UnixException.translateToIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixException.rethrowAsIOException(Unknown Source)
+	at java.base/sun.nio.fs.UnixFileSystemProvider.newByteChannel(Unknown Source)
+	at org.knime.filehandling.core.fs.local.fs.LocalFileSystemProvider.newByteChannel(LocalFileSystemProvider.java:148)
+	at java.base/java.nio.file.spi.FileSystemProvider.newOutputStream(Unknown Source)
+	at java.base/java.nio.file.Files.newOutputStream(Unknown Source)
+	at org.knime.filehandling.core.connections.FSFiles.newOutputStream(FSFiles.java:146)
+	at org.knime.filehandling.core.node.portobject.writer.PortObjectToFileWriterNodeModel.writeToPath(PortObjectToFileWriterNodeModel.java:80)
+	at org.knime.filehandling.core.node.portobject.writer.PortObjectToPathWriterNodeModel.execute(PortObjectToPathWriterNodeModel.java:99)
+	... 13 more
+2025-04-05 22:02:18,761 : WARN  : comm-pool-thread-1 :  : Node : CSV Reader : 3:8 : Please specify a file
+2025-04-05 22:02:26,130 : WARN  : comm-pool-thread-1 :  : Node : CSV Reader : 3:9:8 : Please specify a file
+2025-04-05 22:05:40,847 : WARN  : comm-pool-thread-1 :  : Node : Model Reader : 3:9:10 : Please specify a file
+2025-04-05 22:06:36,039 : WARN  : KNIME-Worker-16-Model Reader 3:9:10 :  : Node : Scorer : 3:9:11 : No columns selected yet.
+2025-04-05 22:06:36,046 : WARN  : KNIME-Worker-17-MultiLayerPerceptron Predictor 3:9:9 :  : Node : Scorer : 3:9:11 : No columns selected yet.
+2025-04-06 16:47:08,351 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Error captured hook ::  
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 16:48:21,576 : WARN  : comm-pool-thread-1 :  : Node : RProp MLP Learner : 3:10:13 : Class column not set
+2025-04-06 16:49:08,037 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Error captured hook ::  
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 16:49:16,577 : WARN  : KNIME-Worker-19-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 16:51:51,745 : ERROR : KNIME-Worker-24-CSV Reader 3:5:1 :  : Node : CSV Reader : 3:5:1 : Execute failed: Table schema has changed in /home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris.csv:
+Expected column '5.1' but got 'Sepal length'
+Please reconfigure the node or consider enabling the 'Use new schema' option.
+
+java.lang.IllegalStateException: Table schema has changed in /home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris.csv:
+Expected column '5.1' but got 'Sepal length'
+Please reconfigure the node or consider enabling the 'Use new schema' option.
+
+	at org.knime.filehandling.core.node.table.reader.DefaultMultiTableReadFactory.validateIndividualSpecs(DefaultMultiTableReadFactory.java:237)
+	at org.knime.filehandling.core.node.table.reader.DefaultMultiTableReadFactory.createFromConfig(DefaultMultiTableReadFactory.java:214)
+	at org.knime.filehandling.core.node.table.reader.MultiTableReader.createMultiRead(MultiTableReader.java:128)
+	at org.knime.filehandling.core.node.table.reader.MultiTableReader.getMultiRead(MultiTableReader.java:209)
+	at org.knime.filehandling.core.node.table.reader.MultiTableReader.readTable(MultiTableReader.java:167)
+	at org.knime.filehandling.core.node.table.reader.TableReaderNodeModel.execute(TableReaderNodeModel.java:160)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+Caused by: java.lang.IllegalStateException: Expected column '5.1' but got 'Sepal length'
+	at org.knime.filehandling.core.node.table.reader.util.MultiTableUtils.checkEquals(MultiTableUtils.java:212)
+	at org.knime.base.node.io.filehandling.csv.reader.api.CSVTableReader.checkSpecs(CSVTableReader.java:241)
+	at org.knime.base.node.io.filehandling.csv.reader.api.CSVTableReader.checkSpecs(CSVTableReader.java:1)
+	at org.knime.filehandling.core.node.table.reader.DefaultMultiTableReadFactory.validateIndividualSpecs(DefaultMultiTableReadFactory.java:229)
+	... 18 more
+2025-04-06 16:51:51,749 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 16:51:51,751 : WARN  : KNIME-Worker-21-CSV Reader 3:7:6 :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 16:52:27,856 : ERROR : KNIME-Worker-25-CSV Reader 3:5:1 :  : Node : CSV Reader : 3:5:1 : Execute failed: Table schema has changed in /home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris.csv:
+Expected column '5.1' but got 'Sepal length'
+Please reconfigure the node or consider enabling the 'Use new schema' option.
+
+java.lang.IllegalStateException: Table schema has changed in /home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris.csv:
+Expected column '5.1' but got 'Sepal length'
+Please reconfigure the node or consider enabling the 'Use new schema' option.
+
+	at org.knime.filehandling.core.node.table.reader.DefaultMultiTableReadFactory.validateIndividualSpecs(DefaultMultiTableReadFactory.java:237)
+	at org.knime.filehandling.core.node.table.reader.DefaultMultiTableReadFactory.createFromConfig(DefaultMultiTableReadFactory.java:214)
+	at org.knime.filehandling.core.node.table.reader.MultiTableReader.createMultiRead(MultiTableReader.java:128)
+	at org.knime.filehandling.core.node.table.reader.MultiTableReader.getMultiRead(MultiTableReader.java:209)
+	at org.knime.filehandling.core.node.table.reader.MultiTableReader.readTable(MultiTableReader.java:167)
+	at org.knime.filehandling.core.node.table.reader.TableReaderNodeModel.execute(TableReaderNodeModel.java:160)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+Caused by: java.lang.IllegalStateException: Expected column '5.1' but got 'Sepal length'
+	at org.knime.filehandling.core.node.table.reader.util.MultiTableUtils.checkEquals(MultiTableUtils.java:212)
+	at org.knime.base.node.io.filehandling.csv.reader.api.CSVTableReader.checkSpecs(CSVTableReader.java:241)
+	at org.knime.base.node.io.filehandling.csv.reader.api.CSVTableReader.checkSpecs(CSVTableReader.java:1)
+	at org.knime.filehandling.core.node.table.reader.DefaultMultiTableReadFactory.validateIndividualSpecs(DefaultMultiTableReadFactory.java:229)
+	... 18 more
+2025-04-06 16:52:28,597 : ERROR : KNIME-Worker-21-CSV Reader 3:5:1 :  : Node : CSV Reader : 3:5:1 : Execute failed: Table schema has changed in /home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris.csv:
+Expected column '5.1' but got 'Sepal length'
+Please reconfigure the node or consider enabling the 'Use new schema' option.
+
+java.lang.IllegalStateException: Table schema has changed in /home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris.csv:
+Expected column '5.1' but got 'Sepal length'
+Please reconfigure the node or consider enabling the 'Use new schema' option.
+
+	at org.knime.filehandling.core.node.table.reader.DefaultMultiTableReadFactory.validateIndividualSpecs(DefaultMultiTableReadFactory.java:237)
+	at org.knime.filehandling.core.node.table.reader.DefaultMultiTableReadFactory.createFromConfig(DefaultMultiTableReadFactory.java:214)
+	at org.knime.filehandling.core.node.table.reader.MultiTableReader.createMultiRead(MultiTableReader.java:128)
+	at org.knime.filehandling.core.node.table.reader.MultiTableReader.getMultiRead(MultiTableReader.java:209)
+	at org.knime.filehandling.core.node.table.reader.MultiTableReader.readTable(MultiTableReader.java:167)
+	at org.knime.filehandling.core.node.table.reader.TableReaderNodeModel.execute(TableReaderNodeModel.java:160)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+Caused by: java.lang.IllegalStateException: Expected column '5.1' but got 'Sepal length'
+	at org.knime.filehandling.core.node.table.reader.util.MultiTableUtils.checkEquals(MultiTableUtils.java:212)
+	at org.knime.base.node.io.filehandling.csv.reader.api.CSVTableReader.checkSpecs(CSVTableReader.java:241)
+	at org.knime.base.node.io.filehandling.csv.reader.api.CSVTableReader.checkSpecs(CSVTableReader.java:1)
+	at org.knime.filehandling.core.node.table.reader.DefaultMultiTableReadFactory.validateIndividualSpecs(DefaultMultiTableReadFactory.java:229)
+	... 18 more
+2025-04-06 16:53:05,258 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c RPC Client:: Error RPC request 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      Error: No such node ID: 3:5:1 valid [3:5:2, 3:5:3, 3:5:4] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 16:53:05,259 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Unhandled rejection:: 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 16:53:05,259 : ERROR : main :  : KnimeBrowserView :  :  : Uncaught (in promise) Error: No such node ID: 3:5:1 valid [3:5:2, 3:5:3, 3:5:4] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 45)
+2025-04-06 16:53:09,644 : WARN  : comm-pool-thread-4 :  : Node : CSV Reader : 3:5:5 : Please specify a file
+2025-04-06 16:53:16,842 : WARN  : comm-pool-thread-4 :  : Node : Partitioning : 3:5:2 : Column 'Iris-setosa' for stratified sampling does not exist
+2025-04-06 16:53:20,675 : WARN  : KNIME-Worker-23-CSV Reader 3:5:5 :  : Node : Partitioning : 3:5:2 : Column 'Iris-setosa' for stratified sampling does not exist
+2025-04-06 16:54:05,660 : WARN  : main :  : Node : RProp MLP Learner : 3:7:7 : Only double columns for input
+2025-04-06 16:54:06,315 : WARN  : main :  : Node : RProp MLP Learner : 3:7:7 : Only double columns for input
+2025-04-06 16:54:08,156 : WARN  : KNIME-Worker-30-CSV Reader 3:7:6 :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 16:54:08,157 : WARN  : KNIME-Worker-30-CSV Reader 3:7:6 :  : Node : RProp MLP Learner : 3:7:7 : Only double columns for input
+2025-04-06 16:54:29,612 : WARN  : main :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 16:54:29,612 : WARN  : main :  : Node : Scorer : 3:7:10 : Column 'Iris-setosa' not found.
+2025-04-06 16:54:30,068 : WARN  : main :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 16:54:30,068 : WARN  : main :  : Node : Scorer : 3:7:10 : Column 'Iris-setosa' not found.
+2025-04-06 16:54:34,082 : WARN  : KNIME-Worker-27-MultiLayerPerceptron Predictor 3:7:8 :  : Node : Scorer : 3:7:10 : Column 'Iris-setosa' not found.
+2025-04-06 16:55:03,463 : WARN  : KNIME-Worker-29-CSV Reader 3:7:6 :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 16:55:10,081 : WARN  : main :  : Node : MultiLayerPerceptron Predictor : 3:9:9 : Could not find 5.1 in inputspec
+2025-04-06 16:55:10,520 : WARN  : main :  : Node : MultiLayerPerceptron Predictor : 3:9:9 : Could not find 5.1 in inputspec
+2025-04-06 16:55:18,241 : WARN  : KNIME-Worker-28-CSV Reader 3:9:8 :  : Node : MultiLayerPerceptron Predictor : 3:9:9 : Could not find 5.1 in inputspec
+2025-04-06 16:55:24,893 : WARN  : main :  : Node : MultiLayerPerceptron Predictor : 3:9:9 : Could not find 5.1 in inputspec
+2025-04-06 16:55:25,423 : WARN  : main :  : Node : MultiLayerPerceptron Predictor : 3:9:9 : Could not find 5.1 in inputspec
+2025-04-06 16:55:28,222 : WARN  : KNIME-Worker-30-Model Reader 3:9:10 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 16:55:28,222 : WARN  : KNIME-Worker-29-CSV Reader 3:9:8 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 16:55:28,226 : ERROR : KNIME-Worker-23-MultiLayerPerceptron Predictor 3:9:9 :  : Node : MultiLayerPerceptron Predictor : 3:9:9 : Execute failed: Input DataTable should not contain missing values.
+java.lang.IllegalArgumentException: Input DataTable should not contain missing values.
+	at org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeModel$MLPClassificationFactory.getCells(MLPPredictorNodeModel.java:402)
+	at org.knime.core.data.container.CellFactory.getCells(CellFactory.java:98)
+	at org.knime.core.data.container.RearrangeColumnsTable.calcNewCellsForRow(RearrangeColumnsTable.java:565)
+	at org.knime.core.data.container.RearrangeColumnsTable.calcNewColsSynchronously(RearrangeColumnsTable.java:484)
+	at org.knime.core.data.container.RearrangeColumnsTable.create(RearrangeColumnsTable.java:412)
+	at org.knime.core.data.container.BufferedTableBackend.rearrange(BufferedTableBackend.java:212)
+	at org.knime.core.node.ExecutionContext.createColumnRearrangeTable(ExecutionContext.java:468)
+	at org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeModel.execute(MLPPredictorNodeModel.java:231)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 16:55:28,227 : WARN  : KNIME-Worker-23-MultiLayerPerceptron Predictor 3:9:9 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 16:55:44,094 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c RPC Client:: Error RPC request 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      Error: No such node ID: 3:9:9 valid [3:9:8, 3:9:10, 3:9:11] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 16:55:44,094 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Unhandled rejection:: 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 16:55:44,095 : ERROR : main :  : KnimeBrowserView :  :  : Uncaught (in promise) Error: No such node ID: 3:9:9 valid [3:9:8, 3:9:10, 3:9:11] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 45)
+2025-04-06 16:55:59,568 : WARN  : comm-pool-thread-5 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 16:56:01,446 : ERROR : KNIME-Worker-31-MultiLayerPerceptron Predictor 3:9:12 :  : Node : MultiLayerPerceptron Predictor : 3:9:12 : Execute failed: Input DataTable should not contain missing values.
+java.lang.IllegalArgumentException: Input DataTable should not contain missing values.
+	at org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeModel$MLPClassificationFactory.getCells(MLPPredictorNodeModel.java:402)
+	at org.knime.core.data.container.CellFactory.getCells(CellFactory.java:98)
+	at org.knime.core.data.container.RearrangeColumnsTable.calcNewCellsForRow(RearrangeColumnsTable.java:565)
+	at org.knime.core.data.container.RearrangeColumnsTable.calcNewColsSynchronously(RearrangeColumnsTable.java:484)
+	at org.knime.core.data.container.RearrangeColumnsTable.create(RearrangeColumnsTable.java:412)
+	at org.knime.core.data.container.BufferedTableBackend.rearrange(BufferedTableBackend.java:212)
+	at org.knime.core.node.ExecutionContext.createColumnRearrangeTable(ExecutionContext.java:468)
+	at org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeModel.execute(MLPPredictorNodeModel.java:231)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 16:56:01,447 : WARN  : KNIME-Worker-31-MultiLayerPerceptron Predictor 3:9:12 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 16:56:36,335 : ERROR : KNIME-Worker-23-MultiLayerPerceptron Predictor 3:9:12 :  : Node : MultiLayerPerceptron Predictor : 3:9:12 : Execute failed: Input DataTable should not contain missing values.
+java.lang.IllegalArgumentException: Input DataTable should not contain missing values.
+	at org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeModel$MLPClassificationFactory.getCells(MLPPredictorNodeModel.java:402)
+	at org.knime.core.data.container.CellFactory.getCells(CellFactory.java:98)
+	at org.knime.core.data.container.RearrangeColumnsTable.calcNewCellsForRow(RearrangeColumnsTable.java:565)
+	at org.knime.core.data.container.RearrangeColumnsTable.calcNewColsSynchronously(RearrangeColumnsTable.java:484)
+	at org.knime.core.data.container.RearrangeColumnsTable.create(RearrangeColumnsTable.java:412)
+	at org.knime.core.data.container.BufferedTableBackend.rearrange(BufferedTableBackend.java:212)
+	at org.knime.core.node.ExecutionContext.createColumnRearrangeTable(ExecutionContext.java:468)
+	at org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeModel.execute(MLPPredictorNodeModel.java:231)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 16:56:36,336 : WARN  : KNIME-Worker-23-MultiLayerPerceptron Predictor 3:9:12 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 16:56:37,052 : ERROR : KNIME-Worker-31-MultiLayerPerceptron Predictor 3:9:12 :  : Node : MultiLayerPerceptron Predictor : 3:9:12 : Execute failed: Input DataTable should not contain missing values.
+java.lang.IllegalArgumentException: Input DataTable should not contain missing values.
+	at org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeModel$MLPClassificationFactory.getCells(MLPPredictorNodeModel.java:402)
+	at org.knime.core.data.container.CellFactory.getCells(CellFactory.java:98)
+	at org.knime.core.data.container.RearrangeColumnsTable.calcNewCellsForRow(RearrangeColumnsTable.java:565)
+	at org.knime.core.data.container.RearrangeColumnsTable.calcNewColsSynchronously(RearrangeColumnsTable.java:484)
+	at org.knime.core.data.container.RearrangeColumnsTable.create(RearrangeColumnsTable.java:412)
+	at org.knime.core.data.container.BufferedTableBackend.rearrange(BufferedTableBackend.java:212)
+	at org.knime.core.node.ExecutionContext.createColumnRearrangeTable(ExecutionContext.java:468)
+	at org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeModel.execute(MLPPredictorNodeModel.java:231)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 16:56:37,052 : WARN  : KNIME-Worker-31-MultiLayerPerceptron Predictor 3:9:12 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 16:56:46,665 : WARN  : KNIME-Worker-27-CSV Reader 3:7:6 :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 16:56:59,725 : WARN  : KNIME-Worker-27-Model Reader 3:9:10 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 16:56:59,726 : WARN  : KNIME-Worker-31-CSV Reader 3:9:8 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 16:56:59,730 : ERROR : KNIME-Worker-28-MultiLayerPerceptron Predictor 3:9:12 :  : Node : MultiLayerPerceptron Predictor : 3:9:12 : Execute failed: Input DataTable should not contain missing values.
+java.lang.IllegalArgumentException: Input DataTable should not contain missing values.
+	at org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeModel$MLPClassificationFactory.getCells(MLPPredictorNodeModel.java:402)
+	at org.knime.core.data.container.CellFactory.getCells(CellFactory.java:98)
+	at org.knime.core.data.container.RearrangeColumnsTable.calcNewCellsForRow(RearrangeColumnsTable.java:565)
+	at org.knime.core.data.container.RearrangeColumnsTable.calcNewColsSynchronously(RearrangeColumnsTable.java:484)
+	at org.knime.core.data.container.RearrangeColumnsTable.create(RearrangeColumnsTable.java:412)
+	at org.knime.core.data.container.BufferedTableBackend.rearrange(BufferedTableBackend.java:212)
+	at org.knime.core.node.ExecutionContext.createColumnRearrangeTable(ExecutionContext.java:468)
+	at org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeModel.execute(MLPPredictorNodeModel.java:231)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 16:56:59,730 : WARN  : KNIME-Worker-28-MultiLayerPerceptron Predictor 3:9:12 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 16:58:05,129 : ERROR : K-AI-0 :  : ChatBackend :  :  : Failed to create chat.
+org.knime.core.util.auth.CouldNotAuthorizeException: Could not authorize. Please log into My-KNIME-Hub.
+	at org.knime.ui.java.browser.lifecycle.Init.lambda$21(Init.java:379)
+	at java.base/java.util.Optional.orElseThrow(Unknown Source)
+	at org.knime.ui.java.browser.lifecycle.Init.lambda$20(Init.java:378)
+	at org.knime.ai.assistant.java.ChatBackend.createChat(ChatBackend.java:162)
+	at org.knime.ai.assistant.java.ChatBackend.lambda$0(ChatBackend.java:151)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.base/java.lang.Thread.run(Unknown Source)
+2025-04-06 16:58:05,138 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Error disconnecting from provider 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 16:58:05,145 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Unhandled rejection:: 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 16:58:05,145 : ERROR : main :  : KnimeBrowserView :  :  : Uncaught (in promise) TypeError: Cannot destructure property 'currentRoute' of 'o' as it is undefined. (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 51)
+2025-04-06 16:59:30,641 : WARN  : KNIME-Worker-32-Missing Value Column Filter 3:9:14 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 16:59:30,646 : ERROR : KNIME-Worker-33-MultiLayerPerceptron Predictor 3:9:12 :  : Node : MultiLayerPerceptron Predictor : 3:9:12 : Execute failed: Input DataTable should not contain missing values.
+java.lang.IllegalArgumentException: Input DataTable should not contain missing values.
+	at org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeModel$MLPClassificationFactory.getCells(MLPPredictorNodeModel.java:402)
+	at org.knime.core.data.container.CellFactory.getCells(CellFactory.java:98)
+	at org.knime.core.data.container.RearrangeColumnsTable.calcNewCellsForRow(RearrangeColumnsTable.java:565)
+	at org.knime.core.data.container.RearrangeColumnsTable.calcNewColsSynchronously(RearrangeColumnsTable.java:484)
+	at org.knime.core.data.container.RearrangeColumnsTable.create(RearrangeColumnsTable.java:412)
+	at org.knime.core.data.container.BufferedTableBackend.rearrange(BufferedTableBackend.java:212)
+	at org.knime.core.node.ExecutionContext.createColumnRearrangeTable(ExecutionContext.java:468)
+	at org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeModel.execute(MLPPredictorNodeModel.java:231)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 16:59:30,647 : WARN  : KNIME-Worker-33-MultiLayerPerceptron Predictor 3:9:12 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 17:00:06,427 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c RPC Client:: Error RPC request 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      Error: No such node ID: 3:9:14 valid [3:9:8, 3:9:10, 3:9:11, 3:9:12] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 17:00:06,427 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Unhandled rejection:: 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 17:00:06,427 : ERROR : main :  : KnimeBrowserView :  :  : Uncaught (in promise) Error: No such node ID: 3:9:14 valid [3:9:8, 3:9:10, 3:9:11, 3:9:12] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 45)
+2025-04-06 17:00:08,975 : WARN  : comm-pool-thread-5 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 17:00:14,507 : ERROR : KNIME-Worker-34-CSV Reader 3:5:5 :  : Node : CSV Reader : 3:5:5 : Execute failed: Table schema has changed in /home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris.csv:
+Expected column 'Sepal length' but got '5.1'
+Please reconfigure the node or consider enabling the 'Use new schema' option.
+
+java.lang.IllegalStateException: Table schema has changed in /home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris.csv:
+Expected column 'Sepal length' but got '5.1'
+Please reconfigure the node or consider enabling the 'Use new schema' option.
+
+	at org.knime.filehandling.core.node.table.reader.DefaultMultiTableReadFactory.validateIndividualSpecs(DefaultMultiTableReadFactory.java:237)
+	at org.knime.filehandling.core.node.table.reader.DefaultMultiTableReadFactory.createFromConfig(DefaultMultiTableReadFactory.java:214)
+	at org.knime.filehandling.core.node.table.reader.MultiTableReader.createMultiRead(MultiTableReader.java:128)
+	at org.knime.filehandling.core.node.table.reader.MultiTableReader.getMultiRead(MultiTableReader.java:209)
+	at org.knime.filehandling.core.node.table.reader.MultiTableReader.readTable(MultiTableReader.java:167)
+	at org.knime.filehandling.core.node.table.reader.TableReaderNodeModel.execute(TableReaderNodeModel.java:160)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+Caused by: java.lang.IllegalStateException: Expected column 'Sepal length' but got '5.1'
+	at org.knime.filehandling.core.node.table.reader.util.MultiTableUtils.checkEquals(MultiTableUtils.java:212)
+	at org.knime.base.node.io.filehandling.csv.reader.api.CSVTableReader.checkSpecs(CSVTableReader.java:241)
+	at org.knime.base.node.io.filehandling.csv.reader.api.CSVTableReader.checkSpecs(CSVTableReader.java:1)
+	at org.knime.filehandling.core.node.table.reader.DefaultMultiTableReadFactory.validateIndividualSpecs(DefaultMultiTableReadFactory.java:229)
+	... 18 more
+2025-04-06 17:00:18,097 : WARN  : main :  : Node : Partitioning : 3:5:2 : Column 'Class' for stratified sampling does not exist
+2025-04-06 17:00:18,601 : WARN  : main :  : Node : Partitioning : 3:5:2 : Column 'Class' for stratified sampling does not exist
+2025-04-06 17:00:19,883 : WARN  : KNIME-Worker-35-CSV Reader 3:5:5 :  : Node : Partitioning : 3:5:2 : Column 'Class' for stratified sampling does not exist
+2025-04-06 17:00:21,298 : WARN  : comm-pool-thread-5 :  : Node : Partitioning : 3:5:2 : Column 'Class' for stratified sampling does not exist
+2025-04-06 17:00:21,795 : WARN  : KNIME-Worker-36-CSV Reader 3:5:5 :  : Node : Partitioning : 3:5:2 : Column 'Class' for stratified sampling does not exist
+2025-04-06 17:00:36,197 : WARN  : main :  : Node : RProp MLP Learner : 3:7:7 : Only double columns for input
+2025-04-06 17:00:36,469 : WARN  : main :  : Node : RProp MLP Learner : 3:7:7 : Only double columns for input
+2025-04-06 17:00:38,322 : WARN  : main :  : Node : Scorer : 3:7:10 : Column 'Class' not found.
+2025-04-06 17:00:38,743 : WARN  : main :  : Node : Scorer : 3:7:10 : Column 'Class' not found.
+2025-04-06 17:00:40,699 : WARN  : KNIME-Worker-35-CSV Reader 3:7:6 :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:00:40,699 : WARN  : KNIME-Worker-35-CSV Reader 3:7:6 :  : Node : Scorer : 3:7:10 : Column 'Class' not found.
+2025-04-06 17:00:40,699 : ERROR : KNIME-Worker-36-RProp MLP Learner 3:7:7 :  : Node : RProp MLP Learner : 3:7:7 : Execute failed: Missing values in input datatable
+java.lang.Exception: Missing values in input datatable
+	at org.knime.base.node.mine.neural.rprop.RPropNodeModel.execute(RPropNodeModel.java:478)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 17:00:40,700 : WARN  : KNIME-Worker-36-RProp MLP Learner 3:7:7 :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:01:23,466 : WARN  : KNIME-Worker-37-Missing Value Column Filter 3:7:11 :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:01:23,466 : WARN  : KNIME-Worker-37-Missing Value Column Filter 3:7:11 :  : Node : Scorer : 3:7:10 : Column 'Class' not found.
+2025-04-06 17:01:23,467 : ERROR : KNIME-Worker-32-RProp MLP Learner 3:7:7 :  : Node : RProp MLP Learner : 3:7:7 : Execute failed: Missing values in input datatable
+java.lang.Exception: Missing values in input datatable
+	at org.knime.base.node.mine.neural.rprop.RPropNodeModel.execute(RPropNodeModel.java:478)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 17:01:23,467 : WARN  : KNIME-Worker-32-RProp MLP Learner 3:7:7 :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:01:28,710 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c RPC Client:: Error RPC request 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      Error: No such node ID: 3:7:11 valid [3:7:6, 3:7:7, 3:7:8, 3:7:9, 3:7:10] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 17:01:28,711 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Unhandled rejection:: 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 17:01:28,711 : ERROR : main :  : KnimeBrowserView :  :  : Uncaught (in promise) Error: No such node ID: 3:7:11 valid [3:7:6, 3:7:7, 3:7:8, 3:7:9, 3:7:10] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 45)
+2025-04-06 17:01:32,527 : WARN  : comm-pool-thread-5 :  : Node : RProp MLP Learner : 3:7:7 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:01:32,528 : WARN  : comm-pool-thread-5 :  : Node : Scorer : 3:7:10 : Column 'Class' not found.
+2025-04-06 17:01:34,228 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Error captured hook ::  
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 17:01:47,943 : WARN  : comm-pool-thread-5 :  : Node : RProp MLP Learner : 3:7:11 : Class column not set
+2025-04-06 17:01:58,644 : WARN  : comm-pool-thread-5 :  : Node : RProp MLP Learner : 3:7:11 : Class column not set
+2025-04-06 17:01:59,197 : WARN  : KNIME-Worker-38-CSV Reader 3:7:6 :  : Node : RProp MLP Learner : 3:7:11 : Class column not set
+2025-04-06 17:02:04,388 : WARN  : main :  : Node : RProp MLP Learner : 3:7:11 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:02:05,110 : WARN  : main :  : Node : RProp MLP Learner : 3:7:11 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:02:06,788 : ERROR : KNIME-Worker-39-RProp MLP Learner 3:7:11 :  : Node : RProp MLP Learner : 3:7:11 : Execute failed: Missing values in input datatable
+java.lang.Exception: Missing values in input datatable
+	at org.knime.base.node.mine.neural.rprop.RPropNodeModel.execute(RPropNodeModel.java:478)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 17:02:06,788 : WARN  : KNIME-Worker-39-RProp MLP Learner 3:7:11 :  : Node : RProp MLP Learner : 3:7:11 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:05:55,626 : WARN  : main :  : Node : Partitioning : 3:5:2 : Column 'Iris-setosa' for stratified sampling does not exist
+2025-04-06 17:05:55,926 : WARN  : main :  : Node : Partitioning : 3:5:2 : Column 'Iris-setosa' for stratified sampling does not exist
+2025-04-06 17:06:14,662 : WARN  : main :  : Node : RProp MLP Learner : 3:7:11 : Only double columns for input
+2025-04-06 17:06:18,846 : WARN  : main :  : Node : RProp MLP Learner : 3:7:11 : Only double columns for input
+2025-04-06 17:06:23,588 : WARN  : KNIME-Worker-44-CSV Reader 3:7:6 :  : Node : RProp MLP Learner : 3:7:11 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:06:32,358 : WARN  : KNIME-Worker-41-CSV Reader 3:7:6 :  : Node : RProp MLP Learner : 3:7:11 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:06:38,270 : WARN  : KNIME-Worker-40-Model Reader 3:9:10 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 17:06:38,270 : WARN  : KNIME-Worker-41-CSV Reader 3:9:8 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 17:06:38,275 : WARN  : KNIME-Worker-43-MultiLayerPerceptron Predictor 3:9:12 :  : Node : Scorer : 3:9:11 : Column 'Iris-setosa' not found.
+2025-04-06 17:06:42,046 : WARN  : main :  : WrappedNodeDialog : Scorer : 3:9:11 : failed to apply settings: First and second column cannot be the same.
+org.knime.core.node.InvalidSettingsException: First and second column cannot be the same.
+	at org.knime.base.node.mine.scorer.accuracy.AccuracyScorer2NodeDialog.saveSettingsTo(AccuracyScorer2NodeDialog.java:349)
+	at org.knime.core.node.NodeDialogPane.internalSaveSettingsTo(NodeDialogPane.java:553)
+	at org.knime.core.node.NodeDialogPane$4.run(NodeDialogPane.java:792)
+	at org.knime.core.node.util.ViewUtils$3.run(ViewUtils.java:353)
+	at org.knime.core.node.util.ViewUtils$2.run(ViewUtils.java:155)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
+2025-04-06 17:07:04,110 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Only double columns for input
+2025-04-06 17:07:07,857 : WARN  : main :  : Node : Scorer : 3:10:11 : Column 'Iris-setosa' not found.
+2025-04-06 17:07:08,131 : WARN  : main :  : Node : Scorer : 3:10:11 : Column 'Iris-setosa' not found.
+2025-04-06 17:07:09,759 : WARN  : KNIME-Worker-42-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:07:09,760 : WARN  : KNIME-Worker-43-CSV Reader 3:10:8 :  : Node : Scorer : 3:10:11 : Column 'Iris-setosa' not found.
+2025-04-06 17:07:09,767 : WARN  : KNIME-Worker-45-MultiLayerPerceptron Predictor 3:10:9 :  : Node : Scorer : 3:10:11 : Column 'Iris-setosa' not found.
+2025-04-06 17:07:16,705 : WARN  : main :  : WrappedNodeDialog : Scorer : 3:10:11 : failed to apply settings: First and second column cannot be the same.
+org.knime.core.node.InvalidSettingsException: First and second column cannot be the same.
+	at org.knime.base.node.mine.scorer.accuracy.AccuracyScorer2NodeDialog.saveSettingsTo(AccuracyScorer2NodeDialog.java:349)
+	at org.knime.core.node.NodeDialogPane.internalSaveSettingsTo(NodeDialogPane.java:553)
+	at org.knime.core.node.NodeDialogPane$4.run(NodeDialogPane.java:792)
+	at org.knime.core.node.util.ViewUtils$3.run(ViewUtils.java:353)
+	at org.knime.core.node.util.ViewUtils$2.run(ViewUtils.java:155)
+	at java.desktop/java.awt.event.InvocationEvent.dispatch(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEventImpl(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.desktop/java.awt.EventQueue$4.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(Unknown Source)
+	at java.base/java.security.ProtectionDomain$JavaSecurityAccessImpl.doIntersectionPrivilege(Unknown Source)
+	at java.desktop/java.awt.EventQueue.dispatchEvent(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpOneEventForFilters(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForFilter(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEventsForHierarchy(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.pumpEvents(Unknown Source)
+	at java.desktop/java.awt.EventDispatchThread.run(Unknown Source)
+2025-04-06 17:07:25,258 : WARN  : KNIME-Worker-41-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:07:37,015 : WARN  : KNIME-Worker-41-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:15:19,984 : WARN  : comm-pool-thread-5 :  : Node : Color Manager : 3:11:14 : Selected column "Class" with default nominal color mapping.
+2025-04-06 17:17:09,757 : WARN  : comm-pool-thread-5 :  : Node : Color Appender : 3:11:16 : Column "Class" does not have posssible values set in its domain - execute predecessor or apply Domain Calculator
+2025-04-06 17:17:13,524 : WARN  : main :  : Node : Color Appender : 3:11:16 : Column "Class" does not have posssible values set in its domain - execute predecessor or apply Domain Calculator
+2025-04-06 17:17:17,029 : WARN  : main :  : Node : Color Appender : 3:11:16 : Column "Class" does not have posssible values set in its domain - execute predecessor or apply Domain Calculator
+2025-04-06 17:19:31,832 : WARN  : KNIME-Worker-47-CSV Reader 3:11:12 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:19:31,833 : WARN  : KNIME-Worker-47-CSV Reader 3:11:12 :  : Node : Color Manager : 3:11:14 : Selected column "Class" with default nominal color mapping.
+2025-04-06 17:19:31,833 : WARN  : KNIME-Worker-49-Color Manager 3:11:14 :  : Node : Color Manager : 3:11:14 : Selected column "Class" with default nominal color mapping.
+2025-04-06 17:20:16,350 : WARN  : comm-pool-thread-5 :  : Node : Color Manager : 3:11:14 : Selected column "Class" with default nominal color mapping.
+2025-04-06 17:20:25,923 : WARN  : KNIME-Worker-46-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:20:25,923 : WARN  : KNIME-Worker-46-CSV Reader 3:11:8 :  : Node : Color Manager : 3:11:14 : Selected column "Class" with default nominal color mapping.
+2025-04-06 17:20:25,923 : WARN  : KNIME-Worker-48-Color Manager 3:11:14 :  : Node : Color Manager : 3:11:14 : Selected column "Class" with default nominal color mapping.
+2025-04-06 17:21:52,060 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c RPC Client:: Error RPC request 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      Error: No such node ID: 3:11:14 valid [3:11:8, 3:11:9, 3:11:11, 3:11:12, 3:11:13, 3:11:15] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 17:21:52,064 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Unhandled rejection:: 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 17:21:52,065 : ERROR : main :  : KnimeBrowserView :  :  : Uncaught (in promise) Error: No such node ID: 3:11:14 valid [3:11:8, 3:11:9, 3:11:11, 3:11:12, 3:11:13, 3:11:15] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 45)
+2025-04-06 17:23:15,476 : WARN  : comm-pool-thread-6 :  : Node : Color Manager : 3:11:14 : Selected column "Class" with default nominal color mapping.
+2025-04-06 17:32:04,711 : ERROR : KNIME-Worker-56-Decision Tree Predictor 3:11:16 :  : DecTreePredictorNodeModel : Decision Tree Predictor : 3:11:16 : Decision Tree evaluation failed: No tree model found.
+2025-04-06 17:32:04,712 : ERROR : KNIME-Worker-56-Decision Tree Predictor 3:11:16 :  : Node : Decision Tree Predictor : 3:11:16 : Execute failed: Decision Tree evaluation failed: No tree model found.
+java.lang.RuntimeException: Decision Tree evaluation failed: No tree model found.
+	at org.knime.base.node.mine.decisiontree2.predictor2.DecTreePredictorNodeModel.execute(DecTreePredictorNodeModel.java:243)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 17:34:01,214 : WARN  : KNIME-Worker-58-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:34:28,438 : WARN  : comm-pool-thread-7 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 17:34:29,084 : WARN  : KNIME-Worker-62-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:34:29,102 : ERROR : KNIME-Worker-62-Decision Tree Predictor 3:11:16 :  : DecTreePredictorNodeModel : Decision Tree Predictor : 3:11:16 : Decision Tree evaluation failed: No tree model found.
+2025-04-06 17:34:29,102 : ERROR : KNIME-Worker-62-Decision Tree Predictor 3:11:16 :  : Node : Decision Tree Predictor : 3:11:16 : Execute failed: Decision Tree evaluation failed: No tree model found.
+java.lang.RuntimeException: Decision Tree evaluation failed: No tree model found.
+	at org.knime.base.node.mine.decisiontree2.predictor2.DecTreePredictorNodeModel.execute(DecTreePredictorNodeModel.java:243)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 17:34:29,103 : ERROR : KNIME-Worker-57-Logistic Regression Predictor 3:11:17 :  : RegressionPredictorNodeModel : Logistic Regression Predictor : 3:11:17 : No Regression Model found.
+2025-04-06 17:34:29,103 : ERROR : KNIME-Worker-57-Logistic Regression Predictor 3:11:17 :  : Node : Logistic Regression Predictor : 3:11:17 : Execute failed: No Regression Model found.
+java.lang.RuntimeException: No Regression Model found.
+	at org.knime.base.node.mine.regression.predict.RegressionPredictorNodeModel.execute(RegressionPredictorNodeModel.java:145)
+	at org.knime.base.node.mine.regression.predict3.RegressionPredictorNodeModel.execute(RegressionPredictorNodeModel.java:162)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 17:37:03,759 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Error captured hook ::  
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 17:37:23,244 : WARN  : comm-pool-thread-7 :  : Node : Scorer : 3:11:18 : Column 'Prediction (Class)' not found.
+2025-04-06 17:37:25,470 : ERROR : KNIME-Worker-64-Decision Tree Predictor 3:11:16 :  : DecTreePredictorNodeModel : Decision Tree Predictor : 3:11:16 : Decision Tree evaluation failed: No tree model found.
+2025-04-06 17:37:25,470 : ERROR : KNIME-Worker-64-Decision Tree Predictor 3:11:16 :  : Node : Decision Tree Predictor : 3:11:16 : Execute failed: Decision Tree evaluation failed: No tree model found.
+java.lang.RuntimeException: Decision Tree evaluation failed: No tree model found.
+	at org.knime.base.node.mine.decisiontree2.predictor2.DecTreePredictorNodeModel.execute(DecTreePredictorNodeModel.java:243)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 17:37:25,470 : WARN  : KNIME-Worker-64-Decision Tree Predictor 3:11:16 :  : Node : Scorer : 3:11:18 : Column 'Prediction (Class)' not found.
+2025-04-06 17:37:40,247 : WARN  : main :  : Node : Scorer : 3:11:18 : Column 'Prediction (Class)' not found.
+2025-04-06 17:37:40,847 : WARN  : main :  : Node : Scorer : 3:11:18 : Column 'Prediction (Class)' not found.
+2025-04-06 17:37:43,172 : ERROR : KNIME-Worker-66-Decision Tree Predictor 3:11:16 :  : DecTreePredictorNodeModel : Decision Tree Predictor : 3:11:16 : Decision Tree evaluation failed: No tree model found.
+2025-04-06 17:37:43,172 : ERROR : KNIME-Worker-66-Decision Tree Predictor 3:11:16 :  : Node : Decision Tree Predictor : 3:11:16 : Execute failed: Decision Tree evaluation failed: No tree model found.
+java.lang.RuntimeException: Decision Tree evaluation failed: No tree model found.
+	at org.knime.base.node.mine.decisiontree2.predictor2.DecTreePredictorNodeModel.execute(DecTreePredictorNodeModel.java:243)
+	at org.knime.core.node.NodeModel.executeModel(NodeModel.java:596)
+	at org.knime.core.node.Node.invokeFullyNodeModelExecute(Node.java:1284)
+	at org.knime.core.node.Node.execute(Node.java:1049)
+	at org.knime.core.node.workflow.NativeNodeContainer.performExecuteNode(NativeNodeContainer.java:603)
+	at org.knime.core.node.exec.LocalNodeExecutionJob.mainExecute(LocalNodeExecutionJob.java:98)
+	at org.knime.core.node.workflow.NodeExecutionJob.internalRun(NodeExecutionJob.java:198)
+	at org.knime.core.node.workflow.NodeExecutionJob.run(NodeExecutionJob.java:117)
+	at org.knime.core.util.ThreadUtils$RunnableWithContextImpl.runWithContext(ThreadUtils.java:369)
+	at org.knime.core.util.ThreadUtils$RunnableWithContext.run(ThreadUtils.java:223)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(Unknown Source)
+	at org.knime.core.util.ThreadPool$MyFuture.run(ThreadPool.java:123)
+	at org.knime.core.util.ThreadPool$Worker.run(ThreadPool.java:246)
+2025-04-06 17:37:43,173 : WARN  : KNIME-Worker-66-Decision Tree Predictor 3:11:16 :  : Node : Scorer : 3:11:18 : Column 'Prediction (Class)' not found.
+2025-04-06 17:39:15,060 : WARN  : comm-pool-thread-7 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:39:16,898 : WARN  : comm-pool-thread-7 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:39:16,899 : WARN  : comm-pool-thread-7 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 17:39:16,899 : WARN  : comm-pool-thread-7 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:39:17,534 : WARN  : KNIME-Worker-68-CSV Reader 3:11:12 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:39:17,534 : WARN  : KNIME-Worker-67-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:39:17,541 : WARN  : KNIME-Worker-65-Linear Regression Learner 3:11:20 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:39:49,283 : WARN  : comm-pool-thread-7 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:39:49,284 : WARN  : comm-pool-thread-7 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 17:39:49,284 : WARN  : comm-pool-thread-7 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:39:49,781 : WARN  : KNIME-Worker-67-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:39:49,782 : WARN  : KNIME-Worker-70-CSV Reader 3:11:12 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:39:49,788 : WARN  : KNIME-Worker-69-Linear Regression Learner 3:11:20 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:39:59,090 : WARN  : comm-pool-thread-7 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:40:01,838 : WARN  : comm-pool-thread-7 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 17:40:01,838 : WARN  : comm-pool-thread-7 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:40:02,332 : WARN  : KNIME-Worker-65-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:40:02,337 : WARN  : KNIME-Worker-67-Linear Regression Learner 3:11:20 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:40:28,782 : WARN  : comm-pool-thread-7 :  : Node : Decision Tree Learner : 3:11:21 : Guessing target column: "Class".
+2025-04-06 17:40:41,287 : WARN  : comm-pool-thread-7 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 17:40:41,854 : WARN  : KNIME-Worker-69-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:43:00,865 : WARN  : comm-pool-thread-7 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:43:05,234 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Error captured hook ::  
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 17:43:06,827 : WARN  : KNIME-Worker-71-Linear Regression Learner 3:11:20 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:45:12,806 : WARN  : comm-pool-thread-7 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:45:22,399 : WARN  : comm-pool-thread-7 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:45:35,362 : WARN  : comm-pool-thread-7 :  : Node : Normalizer : 3:11:22 : No columns included - input stays unchanged.
+2025-04-06 17:45:35,362 : WARN  : comm-pool-thread-7 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:45:36,819 : WARN  : KNIME-Worker-72-Normalizer 3:11:22 :  : Node : Normalizer : 3:11:22 : No columns included - input stays unchanged.
+2025-04-06 17:45:36,837 : WARN  : KNIME-Worker-73-Linear Regression Learner 3:11:23 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:45:46,447 : WARN  : comm-pool-thread-7 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:45:47,928 : WARN  : KNIME-Worker-75-Linear Regression Learner 3:11:23 :  : Node : Logistic Regression Predictor : 3:11:17 : This node does not support numerical targets. Please check whether this is the correct predictor node for your model.
+2025-04-06 17:46:37,846 : WARN  : KNIME-Worker-76-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 17:47:51,474 : WARN  : KNIME-Worker-76-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 17:48:08,174 : WARN  : KNIME-Worker-81-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 17:49:35,113 : WARN  : KNIME-Worker-92-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 17:49:45,772 : WARN  : comm-pool-thread-7 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 17:49:46,205 : WARN  : KNIME-Worker-87-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:49:46,210 : WARN  : KNIME-Worker-77-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 17:50:02,057 : WARN  : KNIME-Worker-84-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 17:50:05,283 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c RPC Client:: Error RPC request 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      Error: No such node ID: 3:11:22 valid [3:11:8, 3:11:9, 3:11:11, 3:11:12, 3:11:13, 3:11:14, 3:11:15, 3:11:16, 3:11:17, 3:11:18, 3:11:19, 3:11:21, 3:11:23] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 17:50:05,284 : ERROR : main :  : KnimeBrowserView :  :  : Uncaught (in promise) Error: No such node ID: 3:11:22 valid [3:11:8, 3:11:9, 3:11:11, 3:11:12, 3:11:13, 3:11:14, 3:11:15, 3:11:16, 3:11:17, 3:11:18, 3:11:19, 3:11:21, 3:11:23] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 45)
+2025-04-06 17:50:06,284 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c RPC Client:: Error RPC request 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      Error: No such node ID: 3:11:22 valid [3:11:8, 3:11:9, 3:11:11, 3:11:12, 3:11:13, 3:11:14, 3:11:15, 3:11:16, 3:11:17, 3:11:18, 3:11:19, 3:11:21, 3:11:23] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 17:50:08,781 : WARN  : KNIME-Worker-86-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 17:51:43,297 : WARN  : comm-pool-thread-7 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 17:51:43,758 : WARN  : KNIME-Worker-93-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 17:51:43,763 : WARN  : KNIME-Worker-98-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 18:13:54,491 : WARN  : ModalContext :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 19:31:30,721 : WARN  : KNIME-Worker-2-CSV Reader 3:7:6 :  : Node : RProp MLP Learner : 3:7:11 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:48:52,058 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:48:53,093 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:49:16,810 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:49:17,211 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:49:30,207 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:49:30,890 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:51:14,974 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:51:15,321 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:53:09,539 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:53:10,018 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:53:34,238 : WARN  : main :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 19:53:34,238 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:53:34,603 : WARN  : main :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 19:53:34,603 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:53:47,517 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:53:47,966 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:55:11,367 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:55:11,806 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:55:24,413 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 19:55:24,819 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:00:59,157 : WARN  : KNIME-Worker-20-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:01:35,174 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:01:35,935 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:01:47,012 : WARN  : main :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:01:47,013 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:01:47,428 : WARN  : main :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:01:47,429 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:02:59,050 : WARN  : main :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:02:59,050 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:02:59,343 : WARN  : main :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:02:59,343 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:03:25,090 : WARN  : main :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:03:25,090 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:03:25,566 : WARN  : main :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:03:25,567 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:03:42,602 : WARN  : comm-pool-thread-4 :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:03:42,959 : WARN  : KNIME-Worker-20-CSV Reader 3:10:12 :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:03:42,959 : WARN  : KNIME-Worker-20-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:07:36,577 : WARN  : comm-pool-thread-4 :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:07:36,578 : WARN  : comm-pool-thread-4 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:07:47,089 : WARN  : comm-pool-thread-4 :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:07:47,089 : WARN  : comm-pool-thread-4 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:07:47,119 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c RPC Client:: Error RPC request 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      Error: No such node ID: 3:10:14 valid [3:10:8, 3:10:9, 3:10:11, 3:10:12, 3:10:13] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 20:07:47,119 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Unhandled rejection:: 
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 20:07:47,120 : ERROR : main :  : KnimeBrowserView :  :  : Uncaught (in promise) Error: No such node ID: 3:10:14 valid [3:10:8, 3:10:9, 3:10:11, 3:10:12, 3:10:13] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 45)
+2025-04-06 20:08:37,386 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Error captured hook ::  
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 20:08:43,222 : WARN  : main :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:08:43,222 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:08:45,560 : WARN  : main :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:08:45,560 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:08:47,973 : ERROR : main :  : KnimeBrowserView :  :  : %cerror%c Error captured hook ::  
+      background: #c0392b;
+      border-radius: 0.5em;
+      color: white;
+      font-weight: bold;
+      padding: 2px 0.5em;
+      [object Object] (source: http://org.knime.ui.java/assets/index-L_Vmx7rg.js; line: 87)
+2025-04-06 20:08:51,328 : WARN  : main :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:08:51,329 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:08:51,800 : WARN  : main :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:08:51,800 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:08:58,971 : WARN  : comm-pool-thread-4 :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:08:59,311 : WARN  : KNIME-Worker-23-CSV Reader 3:10:12 :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:08:59,311 : WARN  : KNIME-Worker-23-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:09:03,671 : WARN  : comm-pool-thread-4 :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:09:04,030 : WARN  : KNIME-Worker-25-CSV Reader 3:10:12 :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:09:04,031 : WARN  : KNIME-Worker-25-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:09:07,915 : WARN  : comm-pool-thread-4 :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:09:08,278 : WARN  : KNIME-Worker-23-CSV Reader 3:10:12 :  : SingleNodeContainer : RProp MLP Learner : 3:10:13 : Duplicate variable assignment for key "1")
+2025-04-06 20:09:08,278 : WARN  : KNIME-Worker-23-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:09:40,133 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:09:40,716 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:09:56,238 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:09:57,259 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:14:04,237 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:14:04,575 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:14:27,065 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:14:34,297 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:14:39,827 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:14:43,477 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:14:43,879 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:15:04,375 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:15:04,750 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:15:10,382 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:15:17,138 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:15:46,173 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:15:46,596 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:16:08,738 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:16:13,017 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:16:45,549 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:16:46,253 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:16:48,496 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:16:53,335 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:17:25,550 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:17:25,960 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:17:27,281 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:17:52,109 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:17:52,616 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:17:53,971 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:04,252 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:04,837 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:06,292 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:15,050 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:16,385 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:17,919 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:27,499 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:27,914 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:29,376 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:38,085 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:38,452 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:47,384 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:47,646 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:18:49,707 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:19:17,295 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:19:17,665 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:19:19,483 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:19:24,665 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:19:38,139 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:19:39,196 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:19:42,115 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:19:50,579 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:19:50,971 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:19:52,814 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:20:19,538 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:20:19,896 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:20:22,969 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:20:54,477 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:20:54,876 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:20:56,188 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:08,136 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:10,972 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:20,169 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:20,455 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:21,914 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:27,867 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:28,108 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:29,516 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:34,034 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:38,407 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:38,664 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:40,160 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:21:48,837 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:22:12,828 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:22:13,391 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:22:15,770 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:22:48,719 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:22:49,142 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:22:50,696 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:23:15,858 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:23:16,954 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:23:18,542 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:23:39,977 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:23:40,903 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:23:42,318 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:23:54,184 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:23:54,817 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:23:56,364 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:24:16,747 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:24:17,155 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:24:19,019 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:24:28,318 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:24:28,576 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:24:30,475 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:25:34,891 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:25:38,419 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:25:38,690 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:25:40,497 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:25:56,145 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:25:56,382 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:25:57,858 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:04,926 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:05,353 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:06,786 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:12,243 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:12,598 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:13,836 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:18,541 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:18,795 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:20,296 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:27,254 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:27,499 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:28,687 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:34,664 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:34,871 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:35,984 : WARN  : KNIME-Worker-28-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:43,984 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:46,233 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:46,449 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:48,022 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:26:54,317 : WARN  : KNIME-Worker-27-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:27:00,471 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:27:00,717 : WARN  : main :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:27:02,232 : WARN  : KNIME-Worker-26-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:31:44,233 : WARN  : KNIME-Worker-29-CSV Reader 3:10:12 :  : Node : RProp MLP Learner : 3:10:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:46:22,762 : WARN  : comm-pool-thread-4 :  : Node : Color Manager : 3:11:24 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 20:46:22,764 : WARN  : comm-pool-thread-4 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 20:46:23,143 : WARN  : KNIME-Worker-33-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 20:46:23,214 : WARN  : KNIME-Worker-38-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 21:00:14,477 : WARN  : comm-pool-thread-8 :  : Node : Color Manager : 3:11:24 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 21:00:14,478 : WARN  : comm-pool-thread-8 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 21:00:15,143 : WARN  : KNIME-Worker-57-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 21:00:15,165 : WARN  : KNIME-Worker-62-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 21:00:41,028 : WARN  : comm-pool-thread-8 :  : Node : Scorer : 3:11:19 : Column 'Class' not found.
+2025-04-06 21:02:57,130 : WARN  : comm-pool-thread-8 :  : Node : Color Manager : 3:11:24 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 21:02:57,131 : WARN  : comm-pool-thread-8 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 21:02:57,561 : WARN  : KNIME-Worker-82-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 21:02:57,572 : WARN  : KNIME-Worker-87-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 21:04:11,327 : WARN  : comm-pool-thread-8 :  : Node : Color Manager : 3:11:24 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 21:04:11,328 : WARN  : comm-pool-thread-8 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 21:04:11,727 : WARN  : KNIME-Worker-90-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 21:04:11,734 : WARN  : KNIME-Worker-86-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 21:29:04,223 : WARN  : comm-pool-thread-9 :  : Node : Color Manager : 3:11:24 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 21:29:04,224 : WARN  : comm-pool-thread-9 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
+2025-04-06 21:29:04,678 : WARN  : KNIME-Worker-107-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
+2025-04-06 21:29:04,686 : WARN  : KNIME-Worker-113-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.

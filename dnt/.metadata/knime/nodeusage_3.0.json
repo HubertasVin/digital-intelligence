@@ -1,0 +1,186 @@
+{
+    "version": "5.4.3.v202503031608",
+    "created": "2025-04-05 18:22",
+    "nodestats": {
+        "nodes": [
+            {
+                "id": "org.knime.base.node.io.filehandling.csv.reader.CSVTableReaderNodeFactory",
+                "nodename": "CSV Reader",
+                "nrexecs": 106,
+                "nrfails": 0,
+                "exectime": 475,
+                "nrcreated": 0,
+                "nrsettingsChanged": 0,
+                "successor": "org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeFactory",
+                "successornodename": "MultiLayerPerceptron Predictor"
+            },
+            {
+                "id": "org.knime.base.node.mine.neural.rprop.RPropNodeFactory2",
+                "nodename": "RProp MLP Learner",
+                "nrexecs": 74,
+                "nrfails": 0,
+                "exectime": 4780,
+                "nrcreated": 0,
+                "nrsettingsChanged": 111,
+                "successor": "n/a",
+                "successornodename": "n/a"
+            },
+            {
+                "id": "org.knime.base.node.io.filehandling.model.writer.ModelWriterNodeFactory",
+                "nodename": "Model Writer",
+                "nrexecs": 1,
+                "nrfails": 0,
+                "exectime": 20,
+                "nrcreated": 0,
+                "nrsettingsChanged": 0,
+                "successor": "n/a",
+                "successornodename": "n/a"
+            },
+            {
+                "id": "org.knime.base.node.mine.neural.mlp2.MLPPredictorNodeFactory",
+                "nodename": "MultiLayerPerceptron Predictor",
+                "nrexecs": 76,
+                "nrfails": 0,
+                "exectime": 602,
+                "nrcreated": 0,
+                "nrsettingsChanged": 0,
+                "successor": "n/a",
+                "successornodename": "n/a"
+            },
+            {
+                "id": "org.knime.base.node.mine.scorer.accuracy.AccuracyScorer2NodeFactory",
+                "nodename": "Scorer",
+                "nrexecs": 90,
+                "nrfails": 0,
+                "exectime": 93,
+                "nrcreated": 0,
+                "nrsettingsChanged": 0,
+                "successor": "n/a",
+                "successornodename": "n/a"
+            },
+            {
+                "id": "org.knime.base.node.io.filehandling.model.reader.ModelReaderNodeFactory",
+                "nodename": "Model Reader",
+                "nrexecs": 1,
+                "nrfails": 0,
+                "exectime": 3,
+                "nrcreated": 0,
+                "nrsettingsChanged": 0,
+                "successor": "n/a",
+                "successornodename": "n/a"
+            },
+            {
+                "id": "org.knime.base.node.io.variablecreator.VariableCreatorNodeFactory",
+                "nodename": "Variable Creator",
+                "nrexecs": 0,
+                "nrfails": 0,
+                "exectime": 0,
+                "nrcreated": 1,
+                "nrsettingsChanged": 0,
+                "successor": "org.knime.base.node.mine.neural.rprop.RPropNodeFactory2",
+                "successornodename": "RProp MLP Learner"
+            },
+            {
+                "id": "org.knime.base.node.viz.property.color.ColorManager2NodeFactory",
+                "nodename": "Color Manager",
+                "nrexecs": 8,
+                "nrfails": 0,
+                "exectime": 3,
+                "nrcreated": 0,
+                "nrsettingsChanged": 0,
+                "successor": "n/a",
+                "successornodename": "n/a"
+            },
+            {
+                "id": "org.knime.base.views.node.scatterplot.ScatterPlotNodeFactory",
+                "nodename": "Scatter Plot",
+                "nrexecs": 8,
+                "nrfails": 0,
+                "exectime": 9,
+                "nrcreated": 0,
+                "nrsettingsChanged": 0,
+                "successor": "n/a",
+                "successornodename": "n/a"
+            },
+            {
+                "id": "org.knime.base.node.mine.decisiontree2.learner2.DecisionTreeLearnerNodeFactory3",
+                "nodename": "Decision Tree Learner",
+                "nrexecs": 4,
+                "nrfails": 0,
+                "exectime": 28,
+                "nrcreated": 0,
+                "nrsettingsChanged": 0,
+                "successor": "n/a",
+                "successornodename": "n/a"
+            },
+            {
+                "id": "org.knime.base.node.mine.decisiontree2.predictor2.DecTreePredictorNodeFactory",
+                "nodename": "Decision Tree Predictor",
+                "nrexecs": 4,
+                "nrfails": 0,
+                "exectime": 34,
+                "nrcreated": 0,
+                "nrsettingsChanged": 0,
+                "successor": "n/a",
+                "successornodename": "n/a"
+            },
+            {
+                "id": "org.knime.base.node.mine.regression.logistic.learner4.LogRegLearnerNodeFactory4",
+                "nodename": "Logistic Regression Learner",
+                "nrexecs": 4,
+                "nrfails": 0,
+                "exectime": 112,
+                "nrcreated": 0,
+                "nrsettingsChanged": 0,
+                "successor": "org.knime.base.node.mine.scorer.accuracy.AccuracyScorer2NodeFactory",
+                "successornodename": "Scorer"
+            },
+            {
+                "id": "org.knime.base.node.mine.regression.logistic.predictor.LogisticRegressionPredictorNodeFactory",
+                "nodename": "Logistic Regression Predictor",
+                "nrexecs": 4,
+                "nrfails": 0,
+                "exectime": 25,
+                "nrcreated": 0,
+                "nrsettingsChanged": 0,
+                "successor": "n/a",
+                "successornodename": "n/a"
+            },
+            {
+                "id": "org.knime.base.node.stats.viz.extended.ExtendedStatisticsNodeFactory",
+                "nodename": "Statistics",
+                "nrexecs": 1,
+                "nrfails": 0,
+                "exectime": 181,
+                "nrcreated": 1,
+                "nrsettingsChanged": 0,
+                "successor": "n/a",
+                "successornodename": "n/a"
+            }
+        ],
+        "metaNodes": {
+        },
+        "wrappedNodes": {
+        },
+        "createdVia": {
+            "WEB_UI": 2,
+            "WEB_UI_QUICK_INSERTION_RECOMMENDED": 1
+        }
+    },
+    "uptime": 43393879,
+    "workflowsOpened": 1,
+    "remoteWorkflowsOpened": 0,
+    "workflowsCreated": 0,
+    "remoteWorkflowsCreated": 0,
+    "columnarStorageWorkflowsOpened": 0,
+    "workflowsImported": 0,
+    "workflowsExported": 0,
+    "webUIPerspectiveSwitches": 0,
+    "javaUIPerspectiveSwitches": 0,
+    "lastUsedPerspective": "none",
+    "launches": 2,
+    "lastApplicationID": "org.knime.product.KNIME_APPLICATION",
+    "timeSinceLastStart": 11705552,
+    "crashes": 0,
+    "properlyShutDown": false
+}

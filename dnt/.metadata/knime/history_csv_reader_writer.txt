@@ -1,0 +1,3 @@
+/home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris-train.csv
+/home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris-test.csv
+/home/hubertas/Documents/backup-folder/Programming/AI/digital-intelligence/dnt/iris.csv
