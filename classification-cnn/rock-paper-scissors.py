@@ -2,8 +2,6 @@ import argparse
 import os
 import random
 import shutil
-import subprocess
-import tempfile
 import zipfile
 from pathlib import Path
 
@@ -16,18 +14,9 @@ import torch.optim as optim
 from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
 from torch.utils.data import DataLoader
 from torchvision import datasets, transforms
-
 import kagglehub
 
-# --------------------------------------------------
-# Constants
-# --------------------------------------------------
-
 SEED = 42
-
-# --------------------------------------------------
-# Utility helpers
-# --------------------------------------------------
 
 def set_seed(seed: int = 42):
     random.seed(seed)
@@ -47,29 +36,24 @@ def get_device():
 # --------------------------------------------------
 
 def download_rps_dataset(dest_dir: str):
-    """Download and extract Rock–Paper–Scissors dataset using kagglehub."""
     dest = Path(dest_dir)
     if (dest / "rock").exists() and (dest / "paper").exists() and (dest / "scissors").exists():
         return
 
-    print("Downloading Rock–Paper–Scissors dataset via kagglehub…")
-    # kagglehub.dataset_download returns a path to the downloaded archive or folder
+    print("Downloading Rock–Paper–Scissors dataset...")
     dataset_path = Path(kagglehub.dataset_download("drgfreeman/rockpaperscissors"))
 
     if dataset_path.suffix == ".zip":
-        # unchanged: extract zip into `dest`
         with zipfile.ZipFile(dataset_path) as archive:
             archive.extractall(dest)
 
     elif dataset_path.is_dir() and set(["rock","paper","scissors"]).issubset(
             {p.name for p in dataset_path.iterdir() if p.is_dir()}
         ):
-        # kagglehub already unpacked into rock/, paper/, scissors/
         for cls in ["rock", "paper", "scissors"]:
             shutil.copytree(dataset_path/cls, dest/cls, dirs_exist_ok=True)
 
     else:
-        # previous branch: nested rock_paper_scissors/{train,test,validation}/...
         extracted = dataset_path / "rock_paper_scissors"
         for split in ["train", "test", "validation"]:
             split_dir = extracted / split
@@ -83,7 +67,7 @@ def download_rps_dataset(dest_dir: str):
 
 
 # --------------------------------------------------
-# Data preparation
+# Duomenų krovimas
 # --------------------------------------------------
 
 def get_dataloaders(data_dir: str, img_size: int, batch_size: int, val_split: float, test_split: float):
@@ -108,7 +92,6 @@ def get_dataloaders(data_dir: str, img_size: int, batch_size: int, val_split: fl
     full_dataset = datasets.ImageFolder(root=data_dir, transform=transform_train)
     class_names = full_dataset.classes
 
-    # Manual split (80‑10‑10 by default)
     num_samples = len(full_dataset)
     indices = list(range(num_samples))
     random.shuffle(indices)
@@ -136,7 +119,7 @@ def get_dataloaders(data_dir: str, img_size: int, batch_size: int, val_split: fl
 
 
 # --------------------------------------------------
-# Model definitions
+# Modeliai
 # --------------------------------------------------
 
 class SimpleCNN(nn.Module):
@@ -262,10 +245,6 @@ class MiniResNet(nn.Module):
 MODELS = {"simple": SimpleCNN, "vgg": VGGStyleCNN, "resnet": MiniResNet}
 
 
-# --------------------------------------------------
-# Training / evaluation loops
-# --------------------------------------------------
-
 def train_epoch(model, loader, criterion, optimizer, device):
     model.train()
     total_loss, correct = 0.0, 0
@@ -294,10 +273,6 @@ def eval_epoch(model, loader, criterion, device):
     n = len(loader.dataset)
     return total_loss / n, correct / n
 
-
-# --------------------------------------------------
-# Plots / visualisations
-# --------------------------------------------------
 
 def plot_curves(train_losses, val_losses, train_accs, val_accs, out_dir):
     epochs = range(1, len(train_losses) + 1)
@@ -340,10 +315,6 @@ def plot_confusion_matrix(model, loader, classes, device, out_dir):
     plt.close()
 
 
-# ------------------------------
-# Main training routine
-# ------------------------------
-
 def main(args):
     set_seed(SEED)
     
@@ -364,6 +335,7 @@ def main(args):
 
     best_loss = 1000.0
     train_losses, val_losses, train_accs, val_accs = [], [], [], []
+    tolerated_epochs = 0
 
     if args.train:
         for epoch in range(args.epochs):
@@ -395,7 +367,6 @@ def main(args):
 
         plot_curves(train_losses, val_losses, train_accs, val_accs, args.output_dir)
 
-    # Load best model & evaluate on test set
     model.load_state_dict(torch.load(os.path.join(args.output_dir, "model.pt")))
     test_loss, test_acc = eval_epoch(model, test_loader, criterion, device)
     print(f"Testavimo paklaida {test_loss:.4f}; Tikslumas {test_acc:.4f}")
@@ -403,10 +374,6 @@ def main(args):
     os.makedirs(args.output_dir, exist_ok=True)
     plot_confusion_matrix(model, test_loader, class_names, device, args.output_dir)
 
-
-# ------------------------------
-# CLI
-# ------------------------------
 
 def str2bool(v):
     if isinstance(v, bool):
