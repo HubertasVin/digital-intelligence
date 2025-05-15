@@ -1138,3 +1138,4 @@ java.lang.RuntimeException: Decision Tree evaluation failed: No tree model found
 2025-04-06 21:29:04,224 : WARN  : comm-pool-thread-9 :  : Node : Color Manager : 3:11:14 : Column "Class" has no nominal values set: execute predecessor or add Binner.
 2025-04-06 21:29:04,678 : WARN  : KNIME-Worker-107-CSV Reader 3:11:8 :  : Node : RProp MLP Learner : 3:11:13 : Input data not normalized. Please consider using the Normalizer Node first.
 2025-04-06 21:29:04,686 : WARN  : KNIME-Worker-113-Logistic Regression Learner 3:11:23 :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
+2025-04-06 21:45:55,351 : WARN  : ModalContext :  : Node : Logistic Regression Learner : 3:11:23 : The algorithm did not reach convergence after the specified number of epochs. Setting the epoch limit higher might result in a better model.
