@@ -47,37 +47,6 @@ class CSVKeystrokeDataset(Dataset):
         return self.samples[idx], self.labels[idx]
 
 
-class KeystrokeDataset(Dataset):
-    def __init__(self, data_dir, user_list, session):
-        self.samples, self.labels = [], []
-        for label, user in enumerate(user_list):
-            session_file = os.path.join(
-                data_dir, f"user_{user}", f"session_{session}.csv"
-            )
-            if not os.path.isfile(session_file):
-                print(f"Warning: missing {session_file}, skipping user_{user}")
-                continue
-            data = np.loadtxt(session_file, delimiter=",")
-            self.samples.append(data)
-            self.labels += [label] * data.shape[0]
-
-        if not self.samples:
-            raise FileNotFoundError(
-                f"No keystroke CSVs found under {data_dir} for session {session}"
-            )
-
-        self.samples = np.vstack(self.samples)
-        self.samples = torch.from_numpy(self.samples).float().unsqueeze(1)
-        self.labels = torch.tensor(self.labels, dtype=torch.long)
-        self.num_classes = len(set(self.labels.numpy()))
-
-    def __len__(self):
-        return len(self.labels)
-
-    def __getitem__(self, idx):
-        return self.samples[idx], self.labels[idx]
-
-
 class Residual1DCNN(nn.Module):
     def __init__(self, num_classes=30, dropout=0.1, activation="relu"):
         super().__init__()
@@ -85,9 +54,7 @@ class Residual1DCNN(nn.Module):
 
         def block(in_ch, out_ch, kernel=3, stride=1):
             return nn.Sequential(
-                nn.Conv1d(
-                    in_ch, out_ch, kernel, stride, padding=kernel // 2, bias=False
-                ),
+                nn.Conv1d(in_ch, out_ch, kernel, stride, padding=kernel // 2, bias=False),
                 nn.BatchNorm1d(out_ch),
                 Act(),
                 nn.Conv1d(out_ch, out_ch, kernel, 1, padding=kernel // 2, bias=False),
@@ -147,14 +114,11 @@ def eval_epoch(model, loader, criterion, device):
 def main(args):
     set_seed(SEED)
 
-    if os.path.isfile(args.data_dir) and args.data_dir.lower().endswith(".csv"):
+    if os.path.isfile(args.data_dir):
         ds = CSVKeystrokeDataset(args.data_dir, args.session)
     else:
-        all_users = sorted(
-            d.name.split("_")[1] for d in os.scandir(args.data_dir) if d.is_dir()
-        )
-        selected = all_users[:30]
-        ds = KeystrokeDataset(args.data_dir, selected, args.session)
+        print("File not found!")
+        return
 
     num_classes = getattr(ds, "num_classes", 30)
 

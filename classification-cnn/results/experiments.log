@@ -1,0 +1,30 @@
+===== model=resnet batchnorm=on optimizer=adam lr=1e-4 activation=relu dropout=0.0 =====
+Epoch 1/5: Train loss 0.8186; Acc 0.6558 | Val loss 0.9276; Acc 0.4954
+Epoch 2/5: Train loss 0.6330; Acc 0.7831 | Val loss 0.5053; Acc 0.8440
+Epoch 3/5: Train loss 0.5173; Acc 0.8396 | Val loss 0.4044; Acc 0.9450
+Epoch 4/5: Train loss 0.4237; Acc 0.8659 | Val loss 0.5509; Acc 0.8165
+
+(process:1475047): Gtk-WARNING **: 21:05:51.908: Theme parser error: gtk.css:120:11-12: Expected a filter
+Epoch 5/5: Train loss 0.4110; Acc 0.8596 | Val loss 0.4863; Acc 0.8394
+Test loss 0.4600; Accuracy 0.8853
+
+===== model=resnet batchnorm=on optimizer=adam lr=1e-4 activation=leaky_relu dropout=0.0 =====
+Epoch 1/5: Train loss 0.8184; Acc 0.6547 | Val loss 0.9630; Acc 0.4725
+Epoch 2/5: Train loss 0.6342; Acc 0.7825 | Val loss 0.5042; Acc 0.8440
+Epoch 3/5: Train loss 0.5203; Acc 0.8311 | Val loss 0.3971; Acc 0.9541
+Epoch 4/5: Train loss 0.4242; Acc 0.8664 | Val loss 0.5594; Acc 0.8119
+
+(process:1481202): Gtk-WARNING **: 21:08:06.467: Theme parser error: gtk.css:120:11-12: Expected a filter
+Epoch 5/5: Train loss 0.4096; Acc 0.8630 | Val loss 0.3643; Acc 0.9174
+Test loss 0.3895; Accuracy 0.8853
+
+===== model=resnet batchnorm=on optimizer=adam lr=1e-4 activation=elu dropout=0.0 =====
+Epoch 1/5: Train loss 0.8505; Acc 0.6159 | Val loss 0.9167; Acc 0.6560
+Epoch 2/5: Train loss 0.6980; Acc 0.7414 | Val loss 0.7709; Acc 0.6606
+Epoch 3/5: Train loss 0.6195; Acc 0.7939 | Val loss 0.4548; Acc 0.9128
+Epoch 4/5: Train loss 0.4797; Acc 0.8470 | Val loss 0.3654; Acc 0.9404
+
+(process:1487185): Gtk-WARNING **: 21:10:20.934: Theme parser error: gtk.css:120:11-12: Expected a filter
+Epoch 5/5: Train loss 0.4666; Acc 0.8333 | Val loss 0.4222; Acc 0.8807
+Test loss 0.4037; Accuracy 0.9128
+
