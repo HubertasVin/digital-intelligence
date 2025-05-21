@@ -237,9 +237,7 @@ def main(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument(
-        "--data_dir", type=str, required=True, help="Klaviatūros duomenų direktorija"
-    )
+    parser.add_argument("--data_dir", type=str, required=True, help="Klaviatūros duomenų direktorija")
     parser.add_argument("--session", type=int, default=1, help="Sesijos numeris (1–8)")
     parser.add_argument("--output_dir", type=str, default="ts_results")
     parser.add_argument("--epochs", type=int, default=30)

@@ -295,7 +295,7 @@ def plot_confusion_matrix(model, loader, classes, device, out_dir):
 
 def main(args):
     set_seed(SEED)
-    
+
     download_rps_dataset(args.data_dir)
 
     train_loader, val_loader, test_loader, class_names = get_dataloaders(
@@ -310,13 +310,13 @@ def main(args):
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=args.lr) if args.optimizer == "adam" else \
                 optim.SGD(model.parameters(), lr=args.lr, momentum=0.9)
-    
+
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, "min", patience=3) if args.scheduler else None
 
     best_loss = float('inf')
     train_losses, val_losses, train_accs, val_accs = [], [], [], []
     tolerated_epochs = 0
-    
+
     if args.train:
         for epoch in range(args.epochs):
             tr_loss, tr_acc = train_epoch(model, train_loader, criterion, optimizer, device)
