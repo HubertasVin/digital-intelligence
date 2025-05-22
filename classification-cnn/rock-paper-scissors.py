@@ -346,7 +346,12 @@ def main(args):
 
         plot_curves(train_losses, val_losses, train_accs, val_accs, args.output_dir)
 
-    model.load_state_dict(torch.load(os.path.join(args.output_dir, "model.pt")))
+    model.load_state_dict(
+        torch.load(
+            os.path.join(args.output_dir, "model.pt"),
+            map_location=get_device()
+        )
+    )
     test_loss, test_acc = eval_epoch(model, test_loader, criterion, device)
     print(f"Test loss {test_loss:.4f}; Accuracy {test_acc:.4f}")
 

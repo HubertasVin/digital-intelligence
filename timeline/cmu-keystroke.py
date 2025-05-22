@@ -209,7 +209,7 @@ def main(args):
     plt.figure(figsize=(10, 8))
     disp = ConfusionMatrixDisplay(confusion_matrix=cm_full)
     disp.plot(cmap="Blues", include_values=False)
-    plt.title("Daugiaklasė painiavos matrica")
+    plt.title("Daugiaklasė klasifikavimo lentelė")
     plt.tight_layout()
     plt.savefig(Path(args.output_dir) / "multiclass_confusion_matrix.png")
     plt.close()
